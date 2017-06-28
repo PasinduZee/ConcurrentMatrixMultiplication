@@ -1,0 +1,78 @@
+THIS IS THE README FILE for the Lab3&4 by 
+130268F : G.P.Kanchana 
+130613K : J.C.Vidanapathirana
+
+Please note the program has been implemented using g++
+
+#################### How to Run ########################
+STEP1.
+	Extract the zip archive.then from terminal move to the directory.
+
+STEP2.
+	Compile 3 versions of the program by running shell script compile_all.sh by
+	"./compile_all.sh" command.
+
+STEP3.
+	Run serial version of the program by
+	"./serial" command
+
+STEP4.
+	Run parallel for version of the program by
+	"./par_for" command
+
+STEP5.
+	Run optimized version of the program by
+	"./optimized" command
+#################### END OF HOW TO RUN ##################
+
+
+#################### Out put explanation ################
+There is two rounds for each version.First round run the matrix multiplication for 10 iterations and calculate the mean and standard deviation for n=200:2000 by 200 intervals.
+then from these means and standard deviations the minimum required iteration count is calculated for z=1.96 and r=5.
+Then the Second round run the program for the minimum required number of iterations which is taken from the round 1. 
+#################### End of output explanation ##########
+
+
+#################### Optimizations ######################
+1.par for only for single for loop, lower thread creation and optimization overhead
+2.Row major used in C++. Therefor the matB is transposed before feed to the multipication.the multiply function is changed to suupport the transpose
+#################### End of optimizatons ################
+
+
+#################### Debug info #########################
+If debug info is required please enable -g flag when compiling three versions.(in the compile_all.sh , add -g to each command).
+#################### End Debug Info #####################
+
+
+#################### Machine specs ######################
+Architecture:          x86_64
+CPU op-mode(s):        32-bit, 64-bit
+Byte Order:            Little Endian
+CPU(s):                4
+On-line CPU(s) list:   0-3
+Thread(s) per core:    2
+Core(s) per socket:    2
+Socket(s):             1
+NUMA node(s):          1
+Vendor ID:             GenuineIntel
+CPU family:            6
+Model:                 69
+Model name:            Intel(R) Core(TM) i5-4200U CPU @ 1.60GHz
+Stepping:              1
+CPU MHz:               2600.796
+CPU max MHz:           2600.0000
+CPU min MHz:           800.0000
+BogoMIPS:              4589.83
+Virtualization:        VT-x
+L1d cache:             32K
+L1i cache:             32K
+L2 cache:              256K
+L3 cache:              3072K
+NUMA node0 CPU(s):     0-3
+#################### End of Machine specs ###############
+
+
+
+
+
+

@@ -1,0 +1,108 @@
+Serial Version Results
+
+-----------First Round - Calculate needed sample counts--------
+
+n : 200
+sample count : 10
+mean <sec>:0.0751401
+s <sec>:0.00746491
+
+n : 400
+sample count : 10
+mean <sec>:0.32653
+s <sec>:0.0249783
+
+n : 600
+sample count : 10
+mean <sec>:1.53802
+s <sec>:0.0537546
+
+n : 800
+sample count : 10
+mean <sec>:4.46612
+s <sec>:0.0256571
+
+n : 1000
+sample count : 10
+mean <sec>:9.99079
+s <sec>:0.0769566
+
+n : 1200
+sample count : 10
+mean <sec>:20.1387
+s <sec>:1.69028
+
+n : 1400
+sample count : 10
+mean <sec>:33.8335
+s <sec>:0.48611
+
+n : 1600                    
+sample count : 10
+mean <sec>:51.7427
+s <sec>:0.633109
+
+n : 1800
+sample count : 10
+mean <sec>:73.6869
+s <sec>:0.97985
+
+n : 2000
+sample count : 10
+mean <sec>:100.387
+s <sec>:4.41364
+
+Required Sample Counts
+16 9 2 1 1 11 1 1 1 3 
+-----------Second Round - run test for required iterations--------
+
+n : 200
+sample count : 16
+mean <sec>:0.070975
+s <sec>:0.0117479
+
+n : 400
+sample count : 9
+mean <sec>:0.325602
+s <sec>:0.0154947
+
+n : 600
+sample count : 2
+mean <sec>:1.09735
+s <sec>:0.0292594
+
+n : 800
+sample count : 1
+mean <sec>:4.12594
+s <sec>:0
+
+n : 1000
+sample count : 1
+mean <sec>:8.08383
+s <sec>:0
+
+n : 1200
+sample count : 11
+mean <sec>:13.6499
+s <sec>:0.101399
+
+n : 1400
+sample count : 1
+mean <sec>:22.3128
+s <sec>:0
+
+n : 1600
+sample count : 1
+mean <sec>:33.411
+s <sec>:0
+
+n : 1800
+sample count : 1
+mean <sec>:49.1142
+s <sec>:0
+
+n : 2000
+sample count : 3
+mean <sec>:112.492
+s <sec>:2.07917
+
