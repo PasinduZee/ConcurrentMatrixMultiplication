@@ -40,23 +40,20 @@ double Test::run_single_test(int n)
 	double** matA=	Aux->generate_matrix(n);
 	double** matB=	Aux->generate_matrix(n);
 	double** matC=	Aux->generate_matrix(n);
-	double** matB_transposed=Aux->generate_matrix(n);		//get the transpose of B
 	
 	//Randomize matA and B and get transpose
 	Aux->randomize_matrix(matA,n);
 	Aux->randomize_matrix(matB,n);
-	Aux->transpose_matrix(matB_transposed,matB,n);
-
+	
 	//start timer and run multiply 
 	t.start();
-	multiply(matC,matA,matB_transposed,n);
+	multiply(matC,matA,matB,n);
 	t.stop();
 
 	//clean memory to stop memory leaks
 	Aux->delete_matrix(matA,n);
 	Aux->delete_matrix(matB,n);
 	Aux->delete_matrix(matC,n);
-	Aux->delete_matrix(matB_transposed,n);
 	
 	//return time for a asingle run
 	return t.get_time();

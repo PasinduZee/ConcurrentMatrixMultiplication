@@ -1,3 +1,6 @@
+#ifdef USE_RESTRICT
+#endif
+
 #include <stdio.h>
 #include <unistd.h>			//sleep    
 #include <cmath>			//pows
@@ -25,6 +28,7 @@ public:
     void aggregate_results(int sample_count,int n);
 	int correct_sample_count(double mean,double s,double z,double r);
 	void multiply(double** matC,double** matA,double** matB,int n);
+	void print(double* __restrict__ matA,int n);
 };
 
 Test::Test() {};
@@ -37,30 +41,30 @@ double Test::run_single_test(int n)
 	Timer t;
 	
 	//Empty matrix generation
-	double* matA =new double[N*N];
-	double* matB =new double[N*N];
+	double* __restrict__ matA =new double[N*N];
+	double* __restrict__ matB =new double[N*N];
 	double* matC =new double[N*N];
-	double* matB_transposed =new double[N*N];
+	double* __restrict__ matB_transposed =new double[N*N];
 
-	double b;
+	
 	//populate matA, matB and matB_transposed
+	srand(time(NULL));		
 	for (int i=0;i<N;i++)
 	{
 		for (int j=0;j<N;j++)
 		{
-			srand(time(NULL));		
-			b=Aux->fRand();
+			double b=Aux->fRand();
 			matA[i*N+j]=b;
-			b=Aux->fRand();
-			matB[i*N+j]=b;
-			matB_transposed[j*N+i]=b;
+			double c=Aux->fRand();
+			matB[i*N+j]=c;
+			matB_transposed[j*N+i]=c;
 		}	
 	}
 
 	//start timer and run multiply 
 	t.start();		
 
-	#pragma omp parallel for 
+	#pragma omp parallel for
 	for (int i = 0; i < N; i++)
 	{
 		for (int j = 0; j < N; j++)
@@ -77,9 +81,10 @@ double Test::run_single_test(int n)
 	t.stop();
 
 	//cout check
-	cout<<matC[N+1]<<"\n";
+	print(matA,n);
+	print(matB,n);
+	print(matC,n);
 
-	
 	//clean memory to stop memory leaks
 	delete matA;
 	delete matB;
@@ -144,6 +149,20 @@ void Test::multiply(double** matC,double** matA,double** matB,int n)
 		}
 	}
 }
+
+void Test::print(double* __restrict__ matA,int n)
+{
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < n; j++)
+		{
+			cout<<matA[i*n+j]<<" ";
+		}
+		cout<<"\n";
+	}
+	cout <<"\n";
+}
+
 //--------------End of Class Test-----------//
 
 int main(int argc, char ** argv) 
@@ -156,34 +175,35 @@ int main(int argc, char ** argv)
 	cout<<"Optimized Version (transopnse + single parfor) Results"<<"\n\n";
 	cout<<"-----------First Round - Calculate needed sample counts--------"<<"\n\n";
 	//First Round
-	for (int i=200;i<2001;i+=200)
-	{
+	//for (int i=200;i<2001;i+=200)
+	//{
 		/*
 			Set the initial sample count to 10.
 			The mean and s is calculated and the required sample count is
 			stored to the sample_count_per_n array;
 		*/
-		test->aggregate_results(10,i);
-	}
+		test->aggregate_results(1,4);
+	//}
 
+/*
 	cout<<"Required Sample Counts"<<"\n";
 	for(int i=1;i<11;i++)
 	{
 		cout<<sample_count_per_n[i]<<" "; 
 	}
-
+*/
 	cout<<"\n";
 	cout<<"-----------Second Round - run test for required iterations--------"<<"\n\n";
 	
 	//Second Round
-	for (int i=200;i<2001;i+=200)
-	{
+//	for (int i=200;i<2001;i+=200)
+//	{
 		/*
 			From the first round minimum required sample count is set
 			Testing is re done
 		*/
-		test->aggregate_results(sample_count_per_n[i/200],i);
-	}
+//		test->aggregate_results(sample_count_per_n[i/200],i);
+//	}
 
 	delete test;
 	return 0;
