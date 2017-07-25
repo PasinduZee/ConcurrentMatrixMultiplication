@@ -11,6 +11,7 @@ STEP1.
 STEP2.
 	To build and run the program,run the shell script run.sh by the following command
 	"./run.sh"
+	
 #################### END OF HOW TO RUN ##################
 
 
@@ -21,6 +22,7 @@ of the parallel version and optimized version is calculated and the difference i
 For each test case,initial 10 round of samples will be calculated and mean and standard deviation is taken.The minimum
 required iteration count is calculated using the mean and standard deviation with z=1.96 and r=5 for each n each version.if the minimum
 required iteration count >10 ,the test case will be rerun minimum_count+1 times and the new mean is taken as the execution time.
+
 ############## End of Sample count explanation ##########
 
 #################### Output explanation #################
@@ -37,4 +39,5 @@ parallel_speedup:<parallel speedup>	optimized_speedup:<optimized speedup>   Diff
 #################### Debug info #########################
 
 If debug info is required please enable -g flag in build command without other optimizations.
+
 #################### End Debug Info #####################
