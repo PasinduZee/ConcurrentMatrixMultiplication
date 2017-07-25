@@ -6,7 +6,12 @@
 #include <iostream>
 #include <stdlib.h> 
 #include <limits>
+#include <omp.h>
 
+/*
+ * Auxilary  class which includes all support functions eg: random number generation,create matrix etc
+ *
+ */
 using namespace std;
 
 class Auxilary {

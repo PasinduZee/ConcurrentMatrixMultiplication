@@ -55,16 +55,7 @@ void Auxilary::print(double** matA,int n)
 	}
 }
 
-void Auxilary::transpose_matrix(double** matB,double** matA,int n)
-{
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < n; j++)
-		{
-			matB[i][j]=matA[j][i];
-		}
-	}
-}
+
 
 bool* Auxilary::is_equal(double** matA,double** matB,int n)
 {

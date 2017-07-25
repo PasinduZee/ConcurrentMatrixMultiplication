@@ -7,6 +7,10 @@
 
 using namespace std;
 
+/*
+ * Timer Class measure time from sec
+ * */
+
 class Timer {
 private:
     struct timespec begin, end;
